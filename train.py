@@ -25,9 +25,8 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 print(model.summary())
 plot_model(model, to_file='model.png', show_shapes=True)
 
-epoch = keras.callbacks.ModelCheckpoint('epoch{epoch:02d}_model.hdf5')
 best = keras.callbacks.ModelCheckpoint('best_model.hdf5', save_best_only=True, monitor='val_loss')
-model.fit(x_train, y_train, nb_epoch=3, batch_size=128, validation_split=0.1, callbacks=[epoch, best])
+model.fit(x_train, y_train, nb_epoch=1000, batch_size=128, validation_split=0.1, callbacks=[best])
 
 loss, accuracy = model.evaluate(x_test, y_test)
 print('test loss: ' + str(loss) + ', test accuracy: ' + str(accuracy))

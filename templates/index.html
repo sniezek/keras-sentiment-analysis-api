@@ -1,0 +1,30 @@
+<html>
+<head>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body style="width: 560px; margin: 0 auto;">
+	<h2>Check sentiment</h2>
+	<div>
+		<div class="input-group">
+			<input id="input" type="text" class="form-control" placeholder="Write something...">
+		  	<span class="input-group-btn">
+				<button class="btn btn-default" onClick="handle()" type="button">Go!</button>
+		  	</span>
+		</div>
+    </div>
+	<div id="result"></div>
+
+	<script>
+	handle = () => {
+
+		let query = document.getElementById("input").value;
+		axios.post('/', {text: query})
+		  .then(function (response) {
+			document.getElementById("result").innerHTML = response.data;
+		  });
+	};
+	</script>
+</body>
+</html>
